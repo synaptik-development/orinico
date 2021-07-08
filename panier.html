@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js"></script>
+    <script src="./controllers/camera.js"></script>
+    <script src="./routes/camera.js"></script>
+    <script src="./server.js"></script>
+    <script src="./app.js"></script>
+    <title>ORINICO-Panier d'achats</title>
+</head>
+<body>
+    <header>
+        <h1>VOTRE PANIER</h1>
+    </header>
+
+    <main>
+        <h2>Récapitulatif de votre commande</h2>
+        <div class="main_content">
+            <article class="main_content_article"></article>
+        </div>
+    </main>
+
+    <section>
+        <form class="form" action="">
+            <div class="form_element">
+                <label for="name">Nom</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form_element">
+                <label for="surname">Prénom</label>
+                <input type="text" id="surname" required>
+            </div>
+
+            <div class="form_element">
+                <label for="birthday">Date de naissance</label>
+                <input type="datetime" id="birthday" required>
+            </div>
+
+            <div class="form_element">
+                <label for="email">Adresse mail</label>
+                <input type="email" id="email" required>
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <div class="btn">valider mon achat</div>
+    </section>
+</body>
+</html>
