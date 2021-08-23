@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
-    <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
-    <title>ORINOCO-Accueil</title>
-  </head>
-  <body>
-    <header>
-      <img src="/backend/images/logo-orinico.png" alt="orinoco" /><a href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
-    </header>
-    <main class="index_main">
-      <h2>NOS PRODUITS</h2>
 
-      <div class="main_content"></div>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
+  <title>ORINOCO-Accueil</title>
+</head>
 
-    <script src="../js/index.js"></script>
-  </body>
+<body>
+
+  <!--header-->
+  <header class="container-fluid">
+    <div class="col col-12">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="/backend/images/logo-orinico.png" alt="orinoco" />
+        </a>
+        <a href="javascript:emptyPanier()" class="navbar-brand"><i class="fas fa-shopping-cart"></i></a>
+      </nav>
+    </div>
+  </header>
+  <!--fin header-->
+
+  <!--cartes produits-->
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col my-3">
+        <h2>NOS PRODUITS</h2>
+      </div>
+    </div>
+    <div class="row text-center my-3" id="index-cards"></div>
+  </main>
+  <!--fin cartes produits-->
+
+  <script src="../js/index.js"></script>
+  <script src="../js/utils/fonctions.js"></script>
+</body>
+
 </html>

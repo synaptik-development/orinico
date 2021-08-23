@@ -1,79 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
     <title>ORINOCO-Panier d'achats</title>
 </head>
+
 <body>
-    <header><a href="./index.html"><img src="/backend/images/logo-orinico.png" alt="orinoco"></a></header>
 
-    <main class="panier_main">
-        <div class="alert-empty-panier">VOTRE PANIER EST VIDE !</div>
-
-        <div class="panier">
-            <h2>Récapitulatif de votre commande</h2>
-
-            <table>
-                <thead>
-                    <th class="table_header" colspan="2">Articles</th>
-                    <th class="table_header">Prix unitaire</th>
-                    <th class="table_header">Quantité</th>
-                    <th class="table_header_total">Total</th>
-                </thead>
-
-                <tbody>
-                </tbody>
-
-                <tfoot>
-                    <td colspan="3"></td>
-                    <td class="table_total table_total_title">Total</td>
-                    <td class="table_total table_total_result"></td>
-                </tfoot>
-            </table>
+    <!--header-->
+    <header class="container-fluid">
+        <div class="col col-12">
+            <nav class="navbar">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/backend/images/logo-orinico.png" alt="orinoco" />
+                </a>
+            </nav>
         </div>
+    </header>
+    <!--fin header-->
 
+    <!--panier d'achat-->
+    <main class="container-fluid" id="panier">
+        <div class="row">
+            <div class="col col-12 py-3">
+                <h2>Récapitulatif de votre commande</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12">
+                <table>
+                    <thead>
+                        <th colspan="2">Articles</th>
+                        <th class="price_one">Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                    <tfoot>
+                        <td colspan="2"></td>
+                        <td class="table_total text-right"><strong>Total</strong></td>
+                        <td class="table_total text-right" colspan="2"><strong class="total_result"></strong></td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!--fin panier d'achat-->
+
+        <!--formulaire-->
+        <section class="container-fluid my-3">
+            <div class="row">
+                <h2>Finaliser ma commande</h2>
+            </div>
+            <form class="form" id="form-contact">
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="firstname">Prénom</label><br>
+                        <input type="text" id="firstname" placeholder="Victor"><br><br>
+
+                        <label for="lastname">Nom</label><br>
+                        <input type="text" id="lastname" placeholder="Hugo"><br><br>
+
+                        <label for="email">Adresse mail</label><br>
+                        <input type="email" id="email" placeholder="victor.hugo@outlook.fr" size="30">
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="address">Adresse</label><br>
+                        <input type="text" id="address" placeholder="1 rue Victor Hugo" size="30"><br><br>
+
+                        <label for="cp">Code postal</label><br>
+                        <input type="number" id="cp" placeholder="57000" size="5"><br><br>
+
+                        <label for="city">Ville</label><br>
+                        <input type="text" id="city" placeholder="Metz">
+                    </div>
+                </div>
+                <br><br>
+                <span id="error-message" class="text-danger row"></span>
+
+                <div class="form-group row">
+                    <input type="submit" class="btn btn-primary" id="submit-panier" value="VALIDER MA COMMANDE"></input>
+                </div>
+            </form>
+        </section>
+        <!--fin formulaire-->
     </main>
 
-    <section class="panier_section">
-        <h2>Finaliser ma commande</h2>
-        <form class="form" id="form-contact">
-            <div class="form_elements">
-                <div>
-                    <label for="firstname">Prénom</label><br>
-                    <input type="text" id="firstname" placeholder="Sébastien" size="15" ><br>
-    
-                    <label for="lastname">Nom</label><br>
-                    <input type="text" id="lastname" placeholder="Dupond" size="15"><br>
-                </div>
-    
-                <div>
-                    <label for="address">Adresse</label><br>
-                    <input type="text" id="address" placeholder="1 chemin des barrières" size="50"><br>
-    
-                    <label for="cp">Code postal</label><br>
-                    <input type="number" id="cp" maxlength="5" placeholder="57000" size="5"><br>
-                
-                    <label for="city">Ville</label><br>
-                    <input type="text" id="city" placeholder="Metz" size="30"><br>
-                </div>
-    
-                <div>
-                    <label for="email">Adresse mail</label><br>
-                    <input type="email" id="email" placeholder="sebastien.kuhler@gmail.fr" size="50"><br>
-                </div>
-            </div>
-            <br>
-            <span id="error-message"></span>
-           
-            <input type="submit" id="submit-panier" value="VALIDER MA COMMANDE"></input>
-        </form>
-        
-    </section>
-    
     <script src="../js/panier.js"></script>
     <script src="../js/utils/fonctions.js"></script>
 </body>
+
 </html>

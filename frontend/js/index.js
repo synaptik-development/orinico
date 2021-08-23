@@ -10,18 +10,18 @@ fetch("http://localhost:3000/api/cameras")
   //---------- affichage des articles sur la page d'accueil ----------//
   .then((cameraList) => {
     for (let camera of cameraList) {
-      document.querySelector(".main_content").innerHTML += `<a href="./produit.html?id=${camera._id}">
-          <article class="main_article" id="${camera._id}">
-              <img src="${camera.imageUrl}">
-              <div class="main_article_caption">
-                  <div class="main_article_title">
-                    <h2 class="main_article_h2">${camera.name}</h2>
-                    <p class="main_article_price">${camera.price / 100} €</p>
-                  </div>
-                  <p class="main_article_description">${camera.description}</p>
-              </div>
-          </article>
-        </a>
+      document.querySelector("#index-cards").innerHTML += `
+      <div class="sm-col-12 col">
+        <article class="card border-primary shadow mx-auto h-100" id="${camera._id}">
+          <img src="${camera.imageUrl}" class="card-img-top">
+          <div class="card-body">
+            <h2 class="card-title h5">${camera.name}</h2>
+            <p class="card-text">${camera.description}</p>
+            <strong class="price">${camera.price / 100} €</strong>
+          </div>
+          <a class="btn btn-primary" href="./produit.html?id=${camera._id}" role="button">voir le produit</a>
+        </article>
+      </div>
       `;
     }
   })

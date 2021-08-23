@@ -2,7 +2,31 @@
 // gestion du panier (local storage)
 //---------------------------------------------------------------------------------------------//
 
-//-------- fonction créer un article ou incrémenter un article --------//
+/*-------- 
+ traiement panier vide (liens bloqués)
+--------*/
+function emptyPanier() {
+  let panier = localStorage.panier;
+  if (panier) {
+    window.location.href = "panier.html";
+  } else {
+    alert("Votre panier est vide !");
+  }
+}
+//-------- fin --------//
+
+/*---------- 
+récupération de l'option sélectionnée 
+----------*/
+function elementSelected(target) {
+  const list = document.querySelector(target);
+  return list[options.selectedIndex].value;
+}
+//---------- fin ----------//
+
+/*-------- 
+gestion des quantités 
+--------*/
 function addArticle() {
   const storage = localStorage.panier;
 
@@ -10,53 +34,54 @@ function addArticle() {
   let article = product[0];
 
   //-------- si localstorage est vide création du panier et envois de l'article --------//
-  if (storage == undefined) {
+  if (!storage) {
     panier = [];
     panier.push(article);
     localStorage.setItem("panier", JSON.stringify(panier));
   }
   //-------- sinon --------//
   else {
-    //-------- check si le modèle courant est absent on l'envoi dans le tableau --------//
+    //-------- check si le modèle courant est absent on l'envoi dans le panier --------//
     let parsePanier = JSON.parse(storage);
-    const modelExist = parsePanier.find((article) => article.id == id);
-    if (modelExist == undefined) {
+    const modelExist = parsePanier.find((article) => article.id == id && article.lenses == elementSelected("#options"));
+    if (!modelExist) {
       parsePanier.push(article);
     }
-
     //-------- si il est dans le tableau, on l'incrémente --------//
     else {
       for (let index in parsePanier) {
-        if (parsePanier[index].id == id) {
+        if (parsePanier[index].id == id && parsePanier[index].lenses == elementSelected("#options")) {
           parsePanier[index].quantity++;
         }
       }
     }
 
-    //-------- on envoi le tableau dans localstorage --------//
+    //-------- envoi du panier dans localstorage --------//
     localStorage.setItem("panier", JSON.stringify(parsePanier));
   }
 }
-//-------- fin fonction créer un article ou incrémenter un article --------//
+//-------- fin --------//
 
-//-------- fonction ajouter au panier --------//
+/*-------- 
+ajouter au panier 
+--------*/
 function insertInShoppingCart() {
-  let formProduit = document.getElementById("form-produit");
-  if (formProduit.options.selectedIndex == [0]) {
+  if (elementSelected("#options") == "") {
     alert("Veuillez choisir une option !");
   } else {
     if (confirm(`Article ajouté au panier. Voir mon panier.`)) {
       window.location.href = "panier.html";
+    } else {
+      window.location.href = "index.html";
     }
     addArticle();
   }
 }
-//-------- fin fonction ajouter au panier --------//
+//-------- fin --------//
 
 //---------------------------------------------------------------------------------------------//
-// envois de la commande
+// formulaire envois de la commande
 //---------------------------------------------------------------------------------------------//
-
 document.getElementById("submit-panier").addEventListener("click", (e) => {
   let erreur;
   let regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
@@ -97,13 +122,13 @@ document.getElementById("submit-panier").addEventListener("click", (e) => {
   let inputs = document.getElementsByTagName("input");
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
-      erreur = "veuillez renseigner tous les champs !";
+      erreur = "*veuillez renseigner tous les champs !";
       inputs[i].style.border = "1px solid red";
     }
   }
   //---------- fin traitement de la qualité des champs ----------//
 
-  //---------- si un champs cotient une erreur, affichage du message correspondant blocage de la fonction ----------//
+  //---------- affichage du message erreur ----------//
   if (erreur) {
     e.preventDefault();
     document.getElementById("error-message").innerHTML = erreur;

@@ -1,136 +1,74 @@
 body{
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
+    font-size: 2.5vmin;
 }
-
-header{
+/*      header      */
+header {
     background-color: #F3E9F1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header i{
-    font-size: 1.7rem;
-    margin-right: 20px;
-    color: #9960E2;
+    margin-bottom: 1rem;
 }
 
 header img{
-    width: 200px;
+    width: 150px;
+    min-width: 100px;
+}
+/*     fin header      */
+
+
+/*       index      */
+.card{
+    min-width: 200px;
+    max-width: 350px;
 }
 
-a{
-    color: black;
-    text-decoration: none;
+#index-cards, .form_elements, .form-group{
+    gap: 1rem;
+}
+/*      fin index      */
+
+
+
+/*      produit      */
+#produit img {
+    width: 70%;
 }
 
-
-/* boutons 
----------------------*/
-.btn{
-    color: white;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #9960E2;
-    box-shadow: teal 1px 2px 2px;
-    border-radius: 10px;
-    padding: 10px;
+#produit button {
     width: fit-content;
-    margin-top: 30px;
-    border: none;
 }
 
-.btn:hover{
-    cursor: pointer;
-    box-shadow: teal 1px 5px 5px;
-}
-/* fin boutons */
-
-
-/* page index 
----------------------*/
-.main_article{
-    object-fit: cover;
-    max-width: 1000px;
-    margin-right: auto;
-    margin-left: auto;
-    max-height: 700px;
-    display: flex;
-    background-color: #F3E9F1;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 20px;
-    gap: 10px;
-}
-.main_article img{
-    max-width: 100%;
-    max-height: 200px;
-    border-radius: 5px 0 0 5px;
-}
-
-.main_content{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.main_article_caption, .produit_article_caption{
+.product-caption {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-}
-
-.main_article_price, .produit_article_price{
-    background-color: white;
-    width: max-content;
-    font-weight: bold;
-    padding: 0.5rem;
-    border-radius: 10px;
-}
-.main_article_title, .produit_article_title{
-    display: flex;
     justify-content: space-between;
 }
 
-/* fin page index */
-
-/* page panier 
----------------------*/
-.panier_main, .panier_section{
-    background-color: #F3E9F1;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 20px 5px 20px 15px;
+.product-caption .btn{
+    margin-left: auto;
+    margin-right: auto;
 }
+/*      fin produit      */
 
+
+
+/*      panier      */
 table{
     width: 100%;
     border-collapse: collapse;
-    vertical-align: middle;
     empty-cells: hide;
     text-align: center;
 }
 
-.table_body_name, .table_body_img{
-    text-align: left;
-}
-
-.table_body_img{
-    width: 100px;
-}
-
 .table_total{
-    font-weight: bold;
     background-color: #9960E2;
     color: white;
 }
 
 tr, th, td{
     padding: 10px;
+}
+
+tr, td{
+    border-top: 1px solid black;
 }
 
  thead{
@@ -143,59 +81,16 @@ tr, th, td{
      width: 100px;
  }
 
- .alert-empty-panier{
-     display: none;
-     font-weight: bold;
-     font-size: 2rem;
-     justify-content: center;
+@media screen and (max-width: 510px){
+    .hidden-sm {
+        display: none;
+    }
+    #form-contact input{
+        width: 100%;
+    }
+
+/* .card{
+    width: 500px;
+} */
  }
-
-.form{
-    display: flex;
-    flex-direction: column;
-}
-
-.form_elements{
-     display: flex;
-     gap: 20px;
-     flex-wrap: wrap;
-}
-
-input{
-    height: 1.5rem;
-    background-color: white;
-    border-radius: 5px;
-    border: none;
-    box-shadow: teal 1px 1px 1px;
-}
-
-#error-message{
-    color: red;
-    max-width: fit-content;
-}
-/* fin page panier */
-
-/* page produit 
----------------------*/
-.produit_article{
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    padding: 5px;
-    object-fit: cover;
-    gap: 20px;
-    max-height: 200px;
-}
-
-.produit_article img{
-    align-self: center;
-    max-width: 100%;
-    max-height: 300px;
-}
-
-.produit_article_caption{
-    background-color: #F3E9F1;
-    border-radius: 10px;
-    padding: 10px;
-}
-/* fin page produit */
+ /*      fin panier      */

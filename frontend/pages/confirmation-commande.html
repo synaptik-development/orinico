@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
-    <title>ORINOCO-Confirmation de commande</title>
-  </head>
-  <body>
-    <header>
-      <a href="./index.html"><img src="/backend/images/logo-orinico.png" alt="orinoco" /></a>
-    </header>
-    <main>
-      <h1>MERCI POUR VOTRE ACHAT !</h1>
-      <div class="confirm_main_content">
-        <p>Commande n°:<strong class="command-id"></strong></p>
-        <p>Montant total:<strong class="command-total"></strong></p>
-      </div>
-    </main>
 
-    <script src="../js/confirmation-commande.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+  <title>ORINOCO-Confirmation de commande</title>
+</head>
+
+<body>
+
+  <!--header-->
+  <header class="container-fluid">
+    <div class="col col-12">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="/backend/images/logo-orinico.png" alt="orinoco" />
+        </a>
+      </nav>
+    </div>
+  </header>
+  <!--fin header-->
+
+  <!--remerciements-->
+  <main>
+    <h2 class="text-center">MERCI POUR VOTRE ACHAT !</h2>
+    <div class="ml-3">
+      <p>Commande n°:<strong class="command-id"></strong></p>
+      <p>Montant total:<strong class="command-total"></strong></p>
+    </div>
+  </main>
+  <!--remerciements-->
+
+  <script src="../js/confirmation-commande.js"></script>
+
+</body>
+
 </html>
