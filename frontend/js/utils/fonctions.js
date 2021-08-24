@@ -13,18 +13,32 @@ function emptyPanier() {
     alert("Votre panier est vide !");
   }
 }
-//-------- fin --------//
 
-/*---------- 
+/*-------------- 
+ajouter au panier 
+--------*/
+function insertInShoppingCart() {
+  if (elementSelected("#options") == "") {
+    alert("Veuillez choisir une option !");
+  } else {
+    if (confirm(`Article ajouté au panier. Voir mon panier.`)) {
+      window.location.href = "panier.html";
+    } else {
+      window.location.href = "index.html";
+    }
+    addArticle();
+  }
+}
+
+/*---------------------------------- 
 récupération de l'option sélectionnée 
 ----------*/
 function elementSelected(target) {
   const list = document.querySelector(target);
   return list[options.selectedIndex].value;
 }
-//---------- fin ----------//
 
-/*-------- 
+/*------------------- 
 gestion des quantités 
 --------*/
 function addArticle() {
@@ -60,76 +74,60 @@ function addArticle() {
     localStorage.setItem("panier", JSON.stringify(parsePanier));
   }
 }
-//-------- fin --------//
 
-/*-------- 
-ajouter au panier 
+//---------------------------------------------------------------------------------------------//
+// gestion du formulaire
+//---------------------------------------------------------------------------------------------//
+
+/*--------------------------- 
+traitement qualité des champs
+(email, firstname, lastname, city) 
 --------*/
-function insertInShoppingCart() {
-  if (elementSelected("#options") == "") {
-    alert("Veuillez choisir une option !");
+function testInputData(regexName, target, message) {
+  if (regexName.test(target.value.trim()) == false) {
+    erreur = message;
+    target.style.border = "2px solid red";
+    return 0;
   } else {
-    if (confirm(`Article ajouté au panier. Voir mon panier.`)) {
-      window.location.href = "panier.html";
-    } else {
-      window.location.href = "index.html";
-    }
-    addArticle();
+    return 1;
   }
 }
-//-------- fin --------//
 
-//---------------------------------------------------------------------------------------------//
-// formulaire envois de la commande
-//---------------------------------------------------------------------------------------------//
-document.getElementById("submit-panier").addEventListener("click", (e) => {
-  let erreur;
-  let regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
-  let regexGeneral = /^[^0-9@&"()!_$*€£`+=\/;?#]+$/;
-
-  //---------- traitement de la qualité des champs ----------//
-  // email //
-  if (regexEmail.test(email.value) == false) {
-    erreur = "*email invalide !";
-    email.style.border = "1px solid red";
-  }
-
-  // city //
-  if (regexGeneral.test(city.value) == false) {
-    erreur = "*ville invalide !";
-    city.style.border = "1px solid red";
-  }
-
-  // cp //
+/*----------------------------- 
+traitement qualité du champs cp 
+--------*/
+function testInputCp() {
   if (cp.value.length != 5) {
     erreur = "*code postal invalide !";
-    cp.style.border = "1px solid red";
+    cp.style.border = "2px solid red";
+    return 0;
+  } else {
+    return 1;
   }
+}
 
-  // lastname //
-  if (regexGeneral.test(lastname.value) == false) {
-    erreur = "*nom invalide !";
-    lastname.style.border = "1px solid red";
-  }
-
-  // firstname //
-  if (regexGeneral.test(firstname.value) == false) {
-    erreur = "*prénom invalide !";
-    firstname.style.border = "1px solid red";
-  }
-
-  //---------- traitement champs vides ----------//
+/*--------------------- 
+traitement champs vides 
+--------*/
+function checkEmptyInputs() {
   let inputs = document.getElementsByTagName("input");
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
       erreur = "*veuillez renseigner tous les champs !";
-      inputs[i].style.border = "1px solid red";
+      inputs[i].style.border = "2px solid red";
+      return 0;
+    } else {
+      return 1;
     }
   }
-  //---------- fin traitement de la qualité des champs ----------//
+}
 
+/*-------------------
+envois de la commande
+--------*/
+document.getElementById("submit-panier").addEventListener("click", (e) => {
   //---------- affichage du message erreur ----------//
-  if (erreur) {
+  if (checkEmptyInputs() == 0 || testInputData(regexGeneral, firstname, "*prénom invalide") == 0 || testInputData(regexEmail, email, "*email invalide") == 0 || testInputData(regexGeneral, lastname, "*nom invalide") == 0 || testInputCp() == 0 || testInputData(regexGeneral, city, "*ville invalide") == 0) {
     e.preventDefault();
     document.getElementById("error-message").innerHTML = erreur;
     return false;
@@ -164,3 +162,48 @@ document.getElementById("submit-panier").addEventListener("click", (e) => {
 
   e.preventDefault();
 });
+
+// function sendOrder(e) {
+//   // e.preventDefault();
+//   testInputData(regexEmail, email, "*email invalide");
+//   testInputData(regexGeneral, city);
+//   testInputCp();
+//   testInputData(regexGeneral, lastname, "*nom invalide");
+//   testInputData(regexGeneral, firstname, "*prénom invalide");
+//   checkEmptyInputs();
+//   //---------- affichage du message erreur ----------//
+//   if (erreur) {
+//     e.preventDefault();
+//     document.getElementById("error-message").innerHTML = erreur;
+//     return false;
+//   }
+
+//   // ---------- création du contact ----------//
+//   let contact = {
+//     firstName: firstname.value,
+//     lastName: lastname.value,
+//     address: address.value,
+//     cp: cp.value,
+//     city: city.value,
+//     email: email.value,
+//   };
+
+//   //---------- envois des éléments vers l'api et récupération de l'orderId ----------//
+//   fetch("http://localhost:3000/api/cameras/order", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ contact, products }),
+//   })
+//     .then((res) => {
+//       return res.json();
+//     })
+//     .then((data) => {
+//       localStorage.setItem("orderId", data.orderId);
+//       localStorage.setItem("price", totalDisplay.innerHTML);
+//       window.location.href = "confirmation-commande.html";
+//     });
+
+//   e.preventDefault();
+// }

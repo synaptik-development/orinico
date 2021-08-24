@@ -18,20 +18,16 @@ fetch("http://localhost:3000/api/cameras/" + id)
       <article class="container border-primary shadow p-3" id="${camera._id}">
         <div class="row px-3">
           <img src="${camera.imageUrl}" class="col img-thumbnail">
-
           <div class="col product-caption">
             <h2>${camera.name}</h2>
             <p>${camera.description}</p>
-
             <form id="form-produit">
               <label for="options">Options :</label>
               <select name="options" id="options">
                 <option value="">--choisissez une lentille--</option>
               </select>
             </form>
-
             <strong>prix : ${camera.price / 100} €</strong>
-
             <div class="row">
               <button class="btn btn-primary" type="submit" id="add-camera">
                 AJOUTER AU PANIER

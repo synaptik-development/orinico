@@ -67,7 +67,7 @@ tr, th, td{
     padding: 10px;
 }
 
-tr, td{
+.tbody-line{
     border-top: 1px solid black;
 }
 
@@ -80,7 +80,9 @@ tr, td{
  table img{
      width: 100px;
  }
+ /*      fin panier      */
 
+ /*      media query      */
 @media screen and (max-width: 510px){
     .hidden-sm {
         display: none;
@@ -88,9 +90,5 @@ tr, td{
     #form-contact input{
         width: 100%;
     }
-
-/* .card{
-    width: 500px;
-} */
  }
- /*      fin panier      */
+ /*      fin media query      */
