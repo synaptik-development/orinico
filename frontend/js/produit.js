@@ -37,28 +37,20 @@ fetch("http://localhost:3000/api/cameras/" + id)
       </article>
     `;
 
-    //---------- affichage des options ----------//
+    // affichage des options //
     for (let option of camera.lenses) {
       document.querySelector("#options").innerHTML += `<option value="${option}">${option}</option>`;
     }
 
+    //---------------------------------------------------------------------------------------------//
+    // intéractions (ajout au panier)
+    //---------------------------------------------------------------------------------------------//
     document.getElementById("add-camera").addEventListener("click", (e) => {
       e.preventDefault();
-      
-      // const optionSelected = elementSelected("#options");
 
-      // const lineProduct = new Article(camera.name, camera._id,  optionSelected, camera.imageUrl, camera.price / 100, 1);
-      let lineProduct = {
-        productName: camera.name,
-        id: camera._id,
-        price: camera.price / 100,
-        img: camera.imageUrl,
-        lenses: elementSelected("#options"),
-        quantity: 1,
-      };
-      product.push(lineProduct);
-
-      insertInShoppingCart();
+      // création de l'article //
+      const lineProduct = new Article(camera.name, camera._id, optionSelected(), camera.imageUrl, camera.price / 100, 1);
+      insertInShoppingCart(lineProduct);
     });
   })
   .catch(function () {

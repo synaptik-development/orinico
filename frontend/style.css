@@ -1,94 +1,99 @@
-body{
-    font-size: 2.5vmin;
-}
-/*      header      */
-header {
-    background-color: #F3E9F1;
-    margin-bottom: 1rem;
+body {
+  font-size: 2.5vmin;
 }
 
-header img{
-    width: 150px;
-    min-width: 100px;
+/*      header      */
+header {
+  background-color: #f3e9f1;
+  margin-bottom: 1rem;
+}
+
+header img {
+  width: 150px;
+  min-width: 100px;
 }
 /*     fin header      */
 
-
 /*       index      */
-.card{
-    min-width: 200px;
-    max-width: 350px;
+.card {
+  min-width: 200px;
+  background-color: #f3e9f1;
 }
 
-#index-cards, .form_elements, .form-group{
-    gap: 1rem;
+.price{
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+#index-cards,
+.form_elements,
+.form-group {
+  gap: 1rem;
 }
 /*      fin index      */
 
-
-
 /*      produit      */
 #produit img {
-    width: 70%;
+  width: 70%;
 }
 
 #produit button {
-    width: fit-content;
+  width: fit-content;
 }
 
 .product-caption {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.product-caption .btn{
-    margin-left: auto;
-    margin-right: auto;
+.product-caption .btn {
+  margin-left: auto;
+  margin-right: auto;
 }
 /*      fin produit      */
 
-
-
 /*      panier      */
-table{
+table {
+  width: 100%;
+  border-collapse: collapse;
+  empty-cells: hide;
+  text-align: center;
+}
+
+.table_total {
+  background-color: #9960e2;
+  color: white;
+}
+
+tr,
+th,
+td {
+  padding: 10px;
+}
+
+.tbody-line {
+  border-top: 1px solid black;
+}
+
+thead {
+  font-weight: bold;
+  background-color: #9960e2;
+  color: white;
+}
+
+table img {
+  width: 100px;
+}
+/*      fin panier      */
+
+/*      media query      */
+@media screen and (max-width: 510px) {
+  .hidden-sm {
+    display: none;
+  }
+  #form-contact input {
     width: 100%;
-    border-collapse: collapse;
-    empty-cells: hide;
-    text-align: center;
+  }
 }
-
-.table_total{
-    background-color: #9960E2;
-    color: white;
-}
-
-tr, th, td{
-    padding: 10px;
-}
-
-.tbody-line{
-    border-top: 1px solid black;
-}
-
- thead{
-     font-weight: bold;
-     background-color: #9960E2;
-     color: white;
- }
-
- table img{
-     width: 100px;
- }
- /*      fin panier      */
-
- /*      media query      */
-@media screen and (max-width: 510px){
-    .hidden-sm {
-        display: none;
-    }
-    #form-contact input{
-        width: 100%;
-    }
- }
- /*      fin media query      */
+/*      fin media query      */
