@@ -24,7 +24,7 @@ fetch("http://localhost:3000/api/cameras/" + id)
             <form id="form-produit">
               <label for="options">Options :</label>
               <select name="options" id="options">
-                <option value="">--choisissez une lentille--</option>
+                <option value="choose an option">--choisissez une lentille--</option>
               </select>
             </form>
             <strong>prix : ${camera.price / 100} €</strong>

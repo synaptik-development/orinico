@@ -26,8 +26,7 @@ header img {
 }
 
 #index-cards,
-.form_elements,
-.form-group {
+#form-contact {
   gap: 1rem;
 }
 /*      fin index      */

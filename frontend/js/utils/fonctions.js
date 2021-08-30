@@ -18,7 +18,7 @@ function emptyPanier() {
 ajouter au panier 
 */
 function insertInShoppingCart(lineProduct) {
-  if (optionSelected() == "") {
+  if (optionSelected() == "choose an option") {
     alert("Veuillez choisir une option !");
   } else {
     product.push(lineProduct);
@@ -81,12 +81,22 @@ function addArticle() {
 
 /* 
 traitement qualité des champs
-(email, firstname, lastname, city) 
+(firstname, lastname, city) 
 */
-function testInputData(regexName, target, message) {
-  if (regexName.test(target.value) == false) {
+function testRegexGeneral(input, message) {
+  let regexGeneral = /^[^0-9@&"()!_$*€£`+=\/;?#]+$/;
+  if (regexGeneral.test(input) == false) {
     erreur = message;
-    target.style.border = "2px solid red";
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
+function testRegexEmail(input, message) {
+  let regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
+  if (regexEmail.test(input) == false) {
+    erreur = message;
     return 0;
   } else {
     return 1;
@@ -96,10 +106,9 @@ function testInputData(regexName, target, message) {
 /*
 traitement qualité du champs (cp)
 */
-function testInputCp(target) {
-  if (target.length != 5) {
+function testInputLength(input) {
+  if (input.length != 5) {
     erreur = "*code postal invalide !";
-    cp.style.border = "2px solid red";
     return 0;
   } else {
     return 1;
@@ -109,12 +118,11 @@ function testInputCp(target) {
 /*
 traitement champs vides 
 */
-function checkEmptyInputs() {
-  let inputs = document.getElementsByTagName("input");
-  for (let i = 0; i < inputs.length; i++) {
-    if (!inputs[i].value) {
+function checkEmptyInputs(listInputs) {
+  for (let i = 0; i < listInputs.length; i++) {
+    if (!listInputs[i].value) {
       erreur = "*veuillez renseigner tous les champs !";
-      inputs[i].style.border = "2px solid red";
+      listInputs[i].style.border = "2px solid red";
       return 0;
     } else {
       return 1;
