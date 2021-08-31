@@ -84,48 +84,48 @@ traitement qualité des champs
 (firstname, lastname, city) 
 */
 function testRegexGeneral(input, message) {
+  let validate = true;
   let regexGeneral = /^[^0-9@&"()!_$*€£`+=\/;?#]+$/;
-  if (regexGeneral.test(input) == false) {
+  if (!regexGeneral.test(input)) {
     erreur = message;
-    return 0;
-  } else {
-    return 1;
+    validate = false;
   }
+  return validate;
 }
 
 function testRegexEmail(input, message) {
+  let validate = true;
   let regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
   if (regexEmail.test(input) == false) {
     erreur = message;
-    return 0;
-  } else {
-    return 1;
+    validate = false;
   }
+  return validate;
 }
 
 /*
 traitement qualité du champs (cp)
 */
 function testInputLength(input) {
+  let validate = true;
   if (input.length != 5) {
     erreur = "*code postal invalide !";
-    return 0;
-  } else {
-    return 1;
+    validate = false;
   }
+  return validate;
 }
 
 /*
 traitement champs vides 
 */
 function checkEmptyInputs(listInputs) {
+  let validate = true;
   for (let i = 0; i < listInputs.length; i++) {
     if (!listInputs[i].value) {
       erreur = "*veuillez renseigner tous les champs !";
       listInputs[i].style.border = "2px solid red";
-      return 0;
-    } else {
-      return 1;
+      validate = false;
     }
+    return validate;
   }
 }

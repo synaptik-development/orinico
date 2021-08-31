@@ -2,7 +2,7 @@ const detailPanier = document.querySelector("tbody");
 const panier = JSON.parse(localStorage.panier);
 const displayPanier = document.querySelector("#panier");
 const totalDisplay = document.querySelector(".total_result");
-const form = document.getElementsByTagName("input")
+const form = document.getElementsByTagName("input");
 const firstname = document.forms["form-contact"]["firstname"];
 const lastname = document.forms["form-contact"]["lastname"];
 const address = document.forms["form-contact"]["address"];
@@ -38,7 +38,7 @@ totalDisplay.innerHTML = totalPrice.reduce(calculTotal) + " " + "€";
 //---------------------------------------------------------------------------------------------//
 document.getElementById("submit-panier").addEventListener("click", (e) => {
   // affichage du message erreur //
-  if (checkEmptyInputs(form) == 0 || testRegexGeneral(firstname.value, "*prénom invalide") == 0 || testRegexEmail(email.value, "*email invalide") == 0 || testRegexGeneral(lastname.value, "*nom invalide") == 0 || testInputLength(cp.value) == 0 || testRegexGeneral(city.value, "*ville invalide") == 0) {
+  if (checkEmptyInputs(form) == false || testRegexGeneral(firstname.value, "*prénom invalide") == false || testRegexEmail(email.value, "*email invalide") == false || testRegexGeneral(lastname.value, "*nom invalide") == false || testInputLength(cp.value) == 0 || testRegexGeneral(city.value, "*ville invalide") == false) {
     e.preventDefault();
     document.getElementById("error-message").innerHTML = erreur;
     return false;
