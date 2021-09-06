@@ -118,14 +118,14 @@ function testInputLength(input) {
 /*
 traitement champs vides 
 */
-function checkEmptyInputs(listInputs) {
+function checkEmptyInputs(input) {
   let validate = true;
-  for (let i = 0; i < listInputs.length; i++) {
-    if (!listInputs[i].value) {
-      erreur = "*veuillez renseigner tous les champs !";
-      listInputs[i].style.border = "2px solid red";
-      validate = false;
-    }
-    return validate;
+  if (!input.value) {
+    erreur = "*veuillez renseigner tous les champs !";
+    input.style.border = "2px solid red";
+    validate = false;
+  } else {
+    input.style.border = "1px solid black";
   }
+  return validate;
 }

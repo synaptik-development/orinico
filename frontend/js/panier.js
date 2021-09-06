@@ -38,7 +38,19 @@ totalDisplay.innerHTML = totalPrice.reduce(calculTotal) + " " + "€";
 //---------------------------------------------------------------------------------------------//
 document.getElementById("submit-panier").addEventListener("click", (e) => {
   // affichage du message erreur //
-  if (checkEmptyInputs(form) == false || testRegexGeneral(firstname.value, "*prénom invalide") == false || testRegexEmail(email.value, "*email invalide") == false || testRegexGeneral(lastname.value, "*nom invalide") == false || testInputLength(cp.value) == 0 || testRegexGeneral(city.value, "*ville invalide") == false) {
+  if (
+    checkEmptyInputs(firstname) == false ||
+    checkEmptyInputs(lastname) == false ||
+    checkEmptyInputs(address) == false ||
+    checkEmptyInputs(cp) == false ||
+    checkEmptyInputs(city) == false ||
+    checkEmptyInputs(email) == false ||
+    testRegexGeneral(firstname.value, "*prénom invalide") == false ||
+    testRegexEmail(email.value, "*email invalide") == false ||
+    testRegexGeneral(lastname.value, "*nom invalide") == false ||
+    testInputLength(cp.value) == 0 ||
+    testRegexGeneral(city.value, "*ville invalide") == false
+  ) {
     e.preventDefault();
     document.getElementById("error-message").innerHTML = erreur;
     return false;
